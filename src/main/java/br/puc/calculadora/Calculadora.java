@@ -35,3 +35,24 @@ public class Calculadora {
         }
         return a / b;
     }
+
+    /**
+     * Método principal para demonstração das funcionalidades
+     */
+    public static void main(String[] args) {
+        Calculadora calc = new Calculadora();
+
+        System.out.println("=== DEMONSTRAÇÃO DA CALCULADORA ===");
+        System.out.println("Soma: 10 + 5 = " + calc.somar(10, 5));
+        System.out.println("Subtração: 10 - 5 = " + calc.subtrair(10, 5));
+        System.out.println("Multiplicação: 10 * 5 = " + calc.multiplicar(10, 5));
+        System.out.println("Divisão: 10 / 5 = " + calc.dividir(10, 5));
+
+        // Exemplo de tratamento de exceção
+        try {
+            calc.dividir(10, 0);
+        } catch (ArithmeticException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+}
