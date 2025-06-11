@@ -54,4 +54,39 @@ public class CalculadoraTest {
         }
     }
 
+    @Nested
+    @DisplayName("Testes de Subtração")
+    class TestesSubtracao {
+
+        @Test
+        @DisplayName("Subtração de números positivos")
+        void testSubtracaoPositivos() {
+            assertEquals(2.0, calculadora.subtrair(5, 3), 0.001);
+            assertEquals(5.0, calculadora.subtrair(10, 5), 0.001);
+        }
+
+        @Test
+        @DisplayName("Subtração de números negativos")
+        void testSubtracaoNegativos() {
+            assertEquals(-2.0, calculadora.subtrair(-5, -3), 0.001);
+            assertEquals(-5.0, calculadora.subtrair(-10, -5), 0.001);
+        }
+
+        @Test
+        @DisplayName("Subtração com zero")
+        void testSubtracaoComZero() {
+            assertEquals(5.0, calculadora.subtrair(5, 0), 0.001);
+            assertEquals(0.0, calculadora.subtrair(0, 0), 0.001);
+            assertEquals(-5.0, calculadora.subtrair(0, 5), 0.001);
+        }
+
+        @Test
+        @DisplayName("Subtração de positivo com negativo")
+        void testSubtracaoPositivoNegativo() {
+            assertEquals(8.0, calculadora.subtrair(5, -3), 0.001);
+            assertEquals(-8.0, calculadora.subtrair(-5, 3), 0.001);
+        }
+
+    }
+
 }
