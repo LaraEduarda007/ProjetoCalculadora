@@ -89,4 +89,38 @@ public class CalculadoraTest {
 
     }
 
+    @Nested
+    @DisplayName("Testes de Multiplicação")
+    class TestesMultiplicacao {
+
+        @Test
+        @DisplayName("Multiplicação de números positivos")
+        void testMultiplicacaoPositivos() {
+            assertEquals(15.0, calculadora.multiplicar(5, 3), 0.001);
+            assertEquals(50.0, calculadora.multiplicar(10, 5), 0.001);
+        }
+
+        @Test
+        @DisplayName("Multiplicação de números negativos")
+        void testMultiplicacaoNegativos() {
+            assertEquals(15.0, calculadora.multiplicar(-5, -3), 0.001);
+            assertEquals(50.0, calculadora.multiplicar(-10, -5), 0.001);
+        }
+
+        @Test
+        @DisplayName("Multiplicação com zero")
+        void testMultiplicacaoComZero() {
+            assertEquals(0.0, calculadora.multiplicar(5, 0), 0.001);
+            assertEquals(0.0, calculadora.multiplicar(0, 5), 0.001);
+            assertEquals(0.0, calculadora.multiplicar(0, 0), 0.001);
+        }
+
+        @Test
+        @DisplayName("Multiplicação de positivo com negativo")
+        void testMultiplicacaoPositivoNegativo() {
+            assertEquals(-15.0, calculadora.multiplicar(5, -3), 0.001);
+            assertEquals(-15.0, calculadora.multiplicar(-5, 3), 0.001);
+        }
+    }
+
 }
