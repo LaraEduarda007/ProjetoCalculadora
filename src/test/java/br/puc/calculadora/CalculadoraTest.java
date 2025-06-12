@@ -123,4 +123,55 @@ public class CalculadoraTest {
         }
     }
 
+     @Nested
+    @DisplayName("Testes de Divisão")
+    class TestesDivisao {
+
+        @Test
+        @DisplayName("Divisão de números positivos")
+        void testDivisaoPositivos() {
+            assertEquals(2.0, calculadora.dividir(10, 5), 0.001);
+            assertEquals(1.666, calculadora.dividir(5, 3), 0.001);
+        }
+
+        @Test
+        @DisplayName("Divisão de números negativos")
+        void testDivisaoNegativos() {
+            assertEquals(2.0, calculadora.dividir(-10, -5), 0.001);
+            assertEquals(1.666, calculadora.dividir(-5, -3), 0.001);
+        }
+
+        @Test
+        @DisplayName("Divisão com zero no numerador")
+        void testDivisaoZeroNumerador() {
+            assertEquals(0.0, calculadora.dividir(0, 5), 0.001);
+            assertEquals(0.0, calculadora.dividir(0, -5), 0.001);
+        }
+
+        @Test
+        @DisplayName("Divisão de positivo com negativo")
+        void testDivisaoPositivoNegativo() {
+            assertEquals(-2.0, calculadora.dividir(10, -5), 0.001);
+            assertEquals(-2.0, calculadora.dividir(-10, 5), 0.001);
+        }
+
+        @Test
+        @DisplayName("Divisão por zero, deve lançar exceção")
+        void testDivisaoPorZero() {
+            ArithmeticException exception = assertThrows(ArithmeticException.class, () -> {
+                calculadora.dividir(10, 0);
+            });
+            assertEquals("Divisão por zero não é permitida", exception.getMessage());
+        }
+
+        @Test
+        @DisplayName("Divisão por zero negativo deve lançar exceção")
+        void testDivisaoPorZeroNegativo() {
+            ArithmeticException exception = assertThrows(ArithmeticException.class, () -> {
+                calculadora.dividir(-10, 0);
+            });
+            assertEquals("Divisão por zero não é permitida", exception.getMessage());
+        }
+    }
+
 }
